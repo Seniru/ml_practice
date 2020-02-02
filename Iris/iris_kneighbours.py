@@ -37,6 +37,10 @@ def getOptimumNeighbors(X_train, X_test, y_train, y_test):
 #getOptimumNeighbors(X_train, X_test, y_train, y_test)
 
 model = KNeighborsRegressor(n_neighbors=3)
+print("Fitting the train data...")
 model.fit(X_train, y_train)
-
-print(mean_absolute_error(model.predict(X_test), y_test))
+print("Predicting the species...")
+predictions = model.predict(X_test)
+print(list(map(lambda x: iris.target_names[int(round(x))], predictions)))
+print("Mean absolute error: ", end="")
+print(mean_absolute_error(predictions, y_test))
