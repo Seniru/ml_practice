@@ -28,14 +28,14 @@ def get_optimum_leaves(train_X, test_X, train_y, test_y):
 	least_error = np.inf
 	for nodes in range(2, 10):
 		score = score_model(train_X, test_X, train_y, test_y, nodes)
-		print("Nodes: {} -> MAE: {}", nodes, score)
+		print("Nodes: {} -> MAE: {}".format(nodes, score))
 		if score < least_error:
 			least_error = score
 			best_node = nodes
 	return best_node
 
 # Uncomment the following line to find the optimum node programatically
-#print("Optimum number of nodes: {}", get_optimum_leaves(train_X, test_X, train_y, test_y))
+#print("Optimum number of nodes: {}".format(get_optimum_leaves(train_X, test_X, train_y, test_y)))
 
 # Optimum: 5 with a MAE of 45.2768937236808
 
@@ -43,5 +43,4 @@ model = DecisionTreeRegressor(max_leaf_nodes=5)
 
 print("Training the data...")
 model.fit(train_X, train_y)
-print("Predictions: ", end="")
-predictions = model.predict(test_X)
+print("Predictions: {}".format(model.predict(test_X)))
